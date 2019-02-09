@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WayBatch</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="app/waybatch.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-4 col-sm-12">
+				<button id="report-btn" class="btn btn-info btn-lg btn-block" onClick="getReports();">Generated reports</button>
+				<button id="save-btn" class="btn btn-success btn-lg btn-block" onClick="saveFile(output, 'waybatch');" disabled>Save the list of archived</button>
+				<p id="output" class="alert"></p>
+			</div>
+			<div class="col-lg-4 col-sm-12">
+				<input id="token" type="text" class="form-control" placeholder="Add domains to the CRON schedule" onkeydown="if(event.keyCode == 13)uploadDomains()">
+				<button id="archive-btn" class="btn btn-primary btn-lg btn-block" onClick="archiveUrl();">Save in WebArchive</button>
+				<textarea id="input" class="form-control alert alert-info"></textarea>
+			</div>
+			<div class="col-lg-4 col-sm-12">
+				<button id="failed-btn" class="btn btn-danger btn-lg btn-block" onClick="saveFile(failed, 'waybatch-failed');" disabled>Save the wrong list</button>
+				<button id="check-btn" class="btn btn-warning btn-lg btn-block" onClick="checkFailed();" disabled>Check the wrong again</button>
+        <p id="failed" class="alert"></p>
+			</div>
+		</div>
+	</div>
+	<div id="modal">
+		<div class="modal-body">
+			<div id="modal-title"></div>
+			<span class="button-close" onclick="modal.style.display=`none`;"></span>
+			<div id="modal-content"></div>
+		</div>
+	</div>
+	<script src="assets/js/FileSaver.min.js"></script>
+	<script src="assets/js/punycode.js"></script>
+	<script src="app/waybatch.js"></script>
+</body>
+</html>
